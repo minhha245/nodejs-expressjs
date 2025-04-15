@@ -2,13 +2,13 @@
   "name": "express-custom-core",
   "version": "1.0.0",
   "description": "Custom Express.js core with migrations and soft deletes",
-  "main": "src/index.js",
+  "main": "backend/src/index.js",
   "scripts": {
-    "start": "node src/index.js",
-    "dev": "nodemon src/index.js",
-    "migrate": "node src/core/migration/cli.js migrate",
-    "migrate:create": "node src/core/migration/cli.js create",
-    "migrate:rollback": "node src/core/migration/cli.js rollback"
+    "start": "node backend/src/index.js",
+    "dev": "nodemon backend/src/index.js",
+    "migrate": "node backend/src/core/migration/cli.js migrate",
+    "migrate:create": "node backend/src/core/migration/cli.js create",
+    "migrate:rollback": "node backend/src/core/migration/cli.js rollback"
   },
   "keywords": [],
   "author": "",
@@ -21,7 +21,8 @@
     "jsonwebtoken": "^9.0.2",
     "moment": "^2.29.4",
     "multer": "^1.4.5-lts.2",
-    "mysql2": "^3.2.0"
+    "mysql2": "^3.14.0",
+    "sequelize": "^6.37.7"
   },
   "devDependencies": {
     "nodemon": "^3.1.9"
