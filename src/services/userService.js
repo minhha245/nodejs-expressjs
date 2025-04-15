@@ -45,7 +45,7 @@ class UserService {
   async getUserById(id) {
     const user = await User.findById(id);
     if (!user) {
-      throw new Error('Không tìm thấy người dùng');
+      throw new Error('User not found');
     }
 
     return this._getUserData(user);
@@ -81,7 +81,7 @@ class UserService {
     // Check if user exists
     const user = await User.findById(id);
     if (!user) {
-      throw new Error('Không tìm thấy người dùng');
+      throw new Error('User not found');
     }
 
     // Update user data
@@ -107,7 +107,7 @@ class UserService {
     // Check if user exists
     const user = await User.findById(id);
     if (!user) {
-      throw new Error('Không tìm thấy người dùng');
+      throw new Error('User not found');
     }
 
     await User.delete(id);
@@ -120,13 +120,13 @@ class UserService {
     // Check if user exists
     const user = await User.findById(id);
     if (!user) {
-      throw new Error('Không tìm thấy người dùng');
+      throw new Error('User not found');
     }
 
     // Verify current password
     const validPassword = await bcrypt.compare(current_password, user.password);
     if (!validPassword) {
-      throw new Error('Mật khẩu hiện tại không đúng');
+      throw new Error('Current password is incorrect');
     }
 
     // Hash new password

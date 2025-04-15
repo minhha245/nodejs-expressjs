@@ -15,14 +15,14 @@ class AuthController {
 
       res.json({
         success: true,
-        message: 'Đăng nhập thành công',
+        message: 'Login successful',
         data: result
       });
     } catch (error) {
       console.error('Login error:', error);
       res.status(401).json({ 
         success: false,
-        message: error.message || 'Đã có lỗi xảy ra'
+        message: error.message || 'An error occurred'
       });
     }
   }
@@ -39,14 +39,14 @@ class AuthController {
 
       res.status(201).json({
         success: true,
-        message: 'Đăng ký thành công',
+        message: 'Registration successful',
         data: result
       });
     } catch (error) {
       console.error('Registration error:', error);
       res.status(400).json({ 
         success: false,
-        message: error.message || 'Đã có lỗi xảy ra'
+        message: error.message || 'An error occurred'
       });
     }
   }
@@ -60,13 +60,13 @@ class AuthController {
 
       res.json({
         success: true,
-        message: 'Đăng xuất thành công'
+        message: 'Logout successful'
       });
     } catch (error) {
       console.error('Logout error:', error);
       res.status(500).json({ 
         success: false,
-        message: error.message || 'Đã có lỗi xảy ra'
+        message: error.message || 'An error occurred'
       });
     }
   }
@@ -86,7 +86,7 @@ class AuthController {
       console.error('Get current user error:', error);
       res.status(404).json({ 
         success: false,
-        message: error.message || 'Đã có lỗi xảy ra'
+        message: error.message || 'An error occurred'
       });
     }
   }

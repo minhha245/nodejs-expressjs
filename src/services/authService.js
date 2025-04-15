@@ -11,13 +11,13 @@ class AuthService {
     // Find user
     const user = await User.findByEmail(email);
     if (!user) {
-      throw new Error('Email hoặc mật khẩu không đúng');
+      throw new Error('Invalid email or password');
     }
 
     // Verify password
     const validPassword = await bcrypt.compare(password, user.password);
     if (!validPassword) {
-      throw new Error('Email hoặc mật khẩu không đúng');
+      throw new Error('Invalid email or password');
     }
 
     // Generate tokens
@@ -89,7 +89,7 @@ class AuthService {
   async getCurrentUser(userId) {
     const user = await User.findById(userId);
     if (!user) {
-      throw new Error('Không tìm thấy người dùng');
+      throw new Error('User not found');
     }
 
     return this._getUserData(user);
@@ -161,5 +161,4 @@ class AuthService {
   }
 }
 
-module.exports = new AuthService(); 
 module.exports = new AuthService(); 

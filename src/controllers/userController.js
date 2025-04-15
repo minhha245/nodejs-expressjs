@@ -22,7 +22,7 @@ class UserController {
       console.error('Get users error:', error);
       res.status(500).json({
         success: false,
-        message: error.message || 'Đã có lỗi xảy ra'
+        message: error.message || 'An error occurred'
       });
     }
   }
@@ -42,7 +42,7 @@ class UserController {
       console.error('Get user error:', error);
       res.status(404).json({
         success: false,
-        message: error.message || 'Đã có lỗi xảy ra'
+        message: error.message || 'An error occurred'
       });
     }
   }
@@ -56,7 +56,7 @@ class UserController {
       if (!req.user.isAdmin) {
         return res.status(403).json({
           success: false,
-          message: 'Không có quyền thực hiện'
+          message: 'Permission denied'
         });
       }
 
@@ -67,14 +67,14 @@ class UserController {
 
       res.status(201).json({
         success: true,
-        message: 'Tạo người dùng thành công',
+        message: 'User created successfully',
         data: user
       });
     } catch (error) {
       console.error('Create user error:', error);
       res.status(400).json({
         success: false,
-        message: error.message || 'Đã có lỗi xảy ra'
+        message: error.message || 'An error occurred'
       });
     }
   }
@@ -89,7 +89,7 @@ class UserController {
       if (req.user.id !== user.id && !req.user.isAdmin) {
         return res.status(403).json({
           success: false,
-          message: 'Không có quyền thực hiện'
+          message: 'Permission denied'
         });
       }
 
@@ -101,14 +101,14 @@ class UserController {
 
       res.json({
         success: true,
-        message: 'Cập nhật thông tin thành công',
+        message: 'User updated successfully',
         data: updatedUser
       });
     } catch (error) {
       console.error('Update user error:', error);
       res.status(400).json({
         success: false,
-        message: error.message || 'Đã có lỗi xảy ra'
+        message: error.message || 'An error occurred'
       });
     }
   }
@@ -122,7 +122,7 @@ class UserController {
       if (!req.user.isAdmin) {
         return res.status(403).json({
           success: false,
-          message: 'Không có quyền thực hiện'
+          message: 'Permission denied'
         });
       }
 
@@ -130,13 +130,13 @@ class UserController {
 
       res.json({
         success: true,
-        message: 'Xóa người dùng thành công'
+        message: 'User deleted successfully'
       });
     } catch (error) {
       console.error('Delete user error:', error);
       res.status(404).json({
         success: false,
-        message: error.message || 'Đã có lỗi xảy ra'
+        message: error.message || 'An error occurred'
       });
     }
   }
@@ -151,7 +151,7 @@ class UserController {
       if (req.user.id !== user.id && !req.user.isAdmin) {
         return res.status(403).json({
           success: false,
-          message: 'Không có quyền thực hiện'
+          message: 'Permission denied'
         });
       }
 
@@ -159,13 +159,13 @@ class UserController {
 
       res.json({
         success: true,
-        message: 'Đổi mật khẩu thành công'
+        message: 'Password changed successfully'
       });
     } catch (error) {
       console.error('Change password error:', error);
       res.status(400).json({
         success: false,
-        message: error.message || 'Đã có lỗi xảy ra'
+        message: error.message || 'An error occurred'
       });
     }
   }

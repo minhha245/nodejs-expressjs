@@ -1,43 +1,112 @@
 module.exports = {
   users: {
-    attributes: {
-      email: 'Email',
-      password: 'Mật khẩu',
-      password_confirm: 'Xác nhận mật khẩu',
-      first_name: 'Tên',
-      last_name: 'Họ',
-      name: 'Họ và tên',
-      tel: 'Số điện thoại',
-      avatar: 'Ảnh đại diện',
-      created_at: 'Ngày tạo',
-      updated_at: 'Ngày cập nhật'
+    id: {
+      type: 'integer',
+      rules: ['required'],
+      label: 'ID'
     },
-    rules: {
-      email: ['required', 'email', 'unique:users'],
-      password: ['required', 'min:6', 'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{6,}$/'],
-      password_confirm: ['required', 'same:password'],
-      first_name: ['required', 'string', 'max:50'],
-      last_name: ['required', 'string', 'max:50'],
-      name: ['required', 'string', 'min:2', 'max:100'],
-      tel: ['required', 'regex:/^[0-9]{10,11}$/'],
-      avatar: ['file', 'mimes:jpeg,png', 'max:5120']
+    email: {
+      type: 'string',
+      rules: ['required', 'email', 'unique:users'],
+      label: 'Email'
+    },
+    password: {
+      type: 'string',
+      rules: ['required', 'min:8', 'password_strength'],
+      label: 'Password'
+    },
+    name: {
+      type: 'string',
+      rules: ['required', 'min:2', 'max:50'],
+      label: 'Name'
+    },
+    avatar: {
+      type: 'file',
+      rules: ['file', 'mimes:jpeg,png,jpg', 'file_max_size:2'],
+      label: 'Avatar'
+    },
+    phone: {
+      type: 'string',
+      rules: ['tel', 'unique:users'],
+      label: 'Phone Number'
+    },
+    address: {
+      type: 'string',
+      rules: ['max:255'],
+      label: 'Address'
+    },
+    status: {
+      type: 'integer',
+      rules: ['required', 'in:0,1'],
+      label: 'Status'
+    },
+    role: {
+      type: 'string',
+      rules: ['required', 'in:admin,user'],
+      label: 'Role'
+    },
+    email_verified_at: {
+      type: 'datetime',
+      rules: ['date'],
+      label: 'Email Verification Date'
+    },
+    created_at: {
+      type: 'datetime',
+      rules: ['date'],
+      label: 'Created Date'
+    },
+    updated_at: {
+      type: 'datetime',
+      rules: ['date'],
+      label: 'Updated Date'
     }
   },
   // Thêm các model khác ở đây
   posts: {
-    attributes: {
-      title: 'Tiêu đề',
-      content: 'Nội dung',
-      author_id: 'Tác giả',
-      status: 'Trạng thái',
-      published_at: 'Ngày xuất bản'
+    id: {
+      type: 'integer',
+      rules: ['required'],
+      label: 'ID'
     },
-    rules: {
-      title: ['required', 'string', 'min:10', 'max:255'],
-      content: ['required', 'string', 'min:100'],
-      author_id: ['required', 'exists:users,id'],
-      status: ['required', 'in:draft,published,archived'],
-      published_at: ['required_if:status,published', 'date']
+    title: {
+      type: 'string',
+      rules: ['required', 'min:10', 'max:255'],
+      label: 'Title'
+    },
+    content: {
+      type: 'text',
+      rules: ['required', 'min:50'],
+      label: 'Content'
+    },
+    thumbnail: {
+      type: 'file',
+      rules: ['file', 'mimes:jpeg,png,jpg', 'file_max_size:5'],
+      label: 'Thumbnail'
+    },
+    user_id: {
+      type: 'integer',
+      rules: ['required', 'exists:users,id'],
+      label: 'Author'
+    },
+    status: {
+      type: 'integer',
+      rules: ['required', 'in:0,1,2'],
+      label: 'Status'
+    },
+    published_at: {
+      type: 'datetime',
+      rules: ['date'],
+      label: 'Published Date'
+    },
+    created_at: {
+      type: 'datetime',
+      rules: ['date'],
+      label: 'Created Date'
+    },
+    updated_at: {
+      type: 'datetime',
+      rules: ['date'],
+      label: 'Updated Date'
     }
   }
 }; 
